@@ -1,3 +1,3 @@
 # config
 
-*back up* files like `vimrc`, `zshrc` ect.
+**back up** files like `vimrc`, `zshrc` etc.
