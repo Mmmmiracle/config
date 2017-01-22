@@ -139,6 +139,7 @@ set foldcolumn=1
 syntax enable 
 set background=dark
 colorscheme solarized
+"let g:solarized_termcolors=256
 "colorscheme desert
 
 " Set extra options when running in GUI mode
@@ -432,4 +433,25 @@ function! <SID>BufcloseCloseIt()
    if buflisted(l:currentBufNum)
      execute("bdelete! ".l:currentBufNum)
    endif
+endfunction
+
+"" find invalid controller characters
+function FindControlCharacters()
+    let controlCharatersPattern = "[[:cntrl:]]"
+    execute "normal /" . controlCharatersPattern . "\<CR>"
+endfunction
+
+"" format json with python json.tool
+function FormatJson()
+    execute "%!python -m json.tool"
+endfunction
+
+"" insert signature
+function Signature()
+    let s:line=line(".")
+    call setline(s:line, "// ")
+    call append(s:line, "// ")
+    call append(s:line+1, "// Author:    Liu Liu")
+    call append(s:line+2, "// Create-At: " . strftime("%Y-%b-%d %H:%M:%S"))
+    unlet s:line
 endfunction
