@@ -1,4 +1,7 @@
-"vundle set"""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vundle list
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set rtp+=~/.vim/bundle/Vundle.vim  
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
@@ -9,30 +12,57 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'majutsushi/tagbar'
 Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'nvie/vim-flake8'
+Plugin 'Yggdroot/indentLine'
+Plugin 'Shougo/vimfiler.vim'
+Plugin 'Shougo/unite.vim'
 call vundle#end()
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vundle setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" set mapleader
-let mapleader = ","
-let g:mapleader = ","
+" YCM
+"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_python_binary_path = '/usr/bin/python'
+nmap gd :YcmCompleter GoToDefinition<cr>
 
-" ycm conf
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-
-" nerdtree ignore
+" NERDTree
 let NERDTreeIgnore = ['\.pyc$', '\.log$']
 
-" vim markdown
+" Vim markdown
 let vim_markdown_preview_github = 1
 let vim_markdown_preview_browser = 'Google Chrome'
 
+" Vim-go auto lint on save
+"let g:go_metalinter_autosave = 1
+"let g:go_metalinter_autosave_enabled = ['golint']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Shortcut key
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Set mapleader
+let mapleader = ","
+let g:mapleader = ","
+
 " Fast saving
 nmap <leader>w :w!<cr>
+" Fast quit
 nmap <leader>q :q<cr>
-nmap <leader>e :e<cr>
+" Fast edit
+nmap <leader>ed :e<cr>
 
+" VimFilerExplorer shortcut
+nmap <leader>ep :VimFilerExplorer<cr>
+
+" Tagbar shortcut
+nmap <leader>tb :Tagbar<cr>
+
+" Fast split window
 nmap <leader>s :split<space>
+" Fast vertical split window
 nmap <leader>sv :vsplit<space>
 
 " :W sudo saves the file 
@@ -47,15 +77,8 @@ command W w !sudo tee % > /dev/null
 set so=7
 let g:godef_split=0
 
-" change dir into crawler as base dir, set for nerdtree
-cd ~/crawler
-
-
 set history=700
 set nu
-
-" set vertical cursor line at 80th char
-set colorcolumn=80
 
 " Enable filetype plugins
 filetype plugin on
@@ -137,10 +160,14 @@ set foldcolumn=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable 
-set background=dark
-colorscheme solarized
+"set background=dark
+"colorscheme solarized
 "let g:solarized_termcolors=256
-"colorscheme desert
+"colorscheme pablo
+
+" set vertical cursor line at 80th char
+set colorcolumn=80
+highlight ColorColumn ctermbg=DarkGrey
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -213,10 +240,10 @@ map <space> /
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+" map <C-j> <C-W>j
+" map <C-k> <C-W>k
+" map <C-h> <C-W>h
+" map <C-l> <C-W>l
 
 imap {} {}<Esc>i<Cr><Esc>O
 imap () ()<Esc>i
@@ -289,7 +316,8 @@ set laststatus=2
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remap VIM 0 to first non-blank character
-map 0 ^
+" map 0 ^
+" map 9 $
 
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
@@ -454,4 +482,19 @@ function Signature()
     call append(s:line+1, "// Author:    Liu Liu")
     call append(s:line+2, "// Create-At: " . strftime("%Y-%b-%d %H:%M:%S"))
     unlet s:line
+endfunction
+
+"" normalize Chinese punctuation
+function Normalize()
+    execute "%s/。/./g"
+    execute "%s/，/,/g"
+
+    execute "%s/（/(/g"
+    execute "%s/）/)/g"
+
+    execute "%s/“/\"/g"
+    execute "%s/”/\"/g"
+
+    execute "%s/‘/'/g"
+    execute "%s/’/'/g"
 endfunction
