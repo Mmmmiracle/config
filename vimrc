@@ -160,10 +160,8 @@ set foldcolumn=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable 
-"set background=dark
-"colorscheme solarized
-"let g:solarized_termcolors=256
-"colorscheme pablo
+set background=dark
+let g:solarized_termcolors=256
 
 " set vertical cursor line at 80th char
 set colorcolumn=80
