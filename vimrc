@@ -11,11 +11,13 @@ Plugin 'bling/vim-airline'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'majutsushi/tagbar'
-Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'nvie/vim-flake8'
-Plugin 'Yggdroot/indentLine'
-Plugin 'Shougo/vimfiler.vim'
-Plugin 'Shougo/unite.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'junegunn/fzf.vim'
+"Plugin 'JamshedVesuna/vim-markdown-preview'
+"Plugin 'Yggdroot/indentLine'
+"Plugin 'Shougo/vimfiler.vim'
+"Plugin 'Shougo/unite.vim'
 call vundle#end()
 
 
@@ -305,9 +307,6 @@ set viminfo^=%
 " Always show the status line
 set laststatus=2
 "let g:airline#extensions#tabline#enabled = 1
-
-" Format the status line
-"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \机智的牛牛大人为您报时:\ %{strftime(\"%H:%M\")}
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
