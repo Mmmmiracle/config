@@ -3,6 +3,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set rtp+=~/.vim/bundle/Vundle.vim  
+
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'fatih/vim-go'
@@ -14,6 +15,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/fzf.vim'
+Plugin 'cespare/vim-toml'
 "Plugin 'JamshedVesuna/vim-markdown-preview'
 "Plugin 'Yggdroot/indentLine'
 "Plugin 'Shougo/vimfiler.vim'
@@ -41,6 +43,9 @@ let vim_markdown_preview_browser = 'Google Chrome'
 "let g:go_metalinter_autosave = 1
 "let g:go_metalinter_autosave_enabled = ['golint']
 
+" fzf runtimepath
+set rtp+=~/.fzf
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Shortcut key
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -61,6 +66,9 @@ nmap <leader>ep :VimFilerExplorer<cr>
 
 " Tagbar shortcut
 nmap <leader>tb :Tagbar<cr>
+
+" FZF shortcut
+nmap <leader>f :FZF<cr>
 
 " Fast split window
 nmap <leader>s :split<space>
