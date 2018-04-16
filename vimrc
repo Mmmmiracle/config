@@ -34,6 +34,8 @@ nmap gd :YcmCompleter GoToDefinition<cr>
 
 " NERDTree
 let NERDTreeIgnore = ['\.pyc$', '\.log$']
+let g:NERDTreeWinSize=40
+
 
 " Vim markdown
 let vim_markdown_preview_github = 1
@@ -171,7 +173,8 @@ set foldcolumn=1
 " Enable syntax highlighting
 syntax enable 
 set background=dark
-let g:solarized_termcolors=256
+" colorscheme solarized
+" let g:solarized_termcolors=256
 
 " set vertical cursor line at 80th char
 set colorcolumn=80
@@ -502,4 +505,12 @@ function Normalize()
 
     execute "%s/‘/'/g"
     execute "%s/’/'/g"
+endfunction
+
+function NERDTreeRuntimeDevPath()
+    execute "NERDTree ~/git/live/app"
+endfunction
+
+function NERDTreeGoDevPath()
+    execute "NERDTree ~/git/go/src/code.byted.org"
 endfunction
