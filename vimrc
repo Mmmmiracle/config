@@ -16,10 +16,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/fzf.vim'
 Plugin 'cespare/vim-toml'
-"Plugin 'JamshedVesuna/vim-markdown-preview'
-"Plugin 'Yggdroot/indentLine'
-"Plugin 'Shougo/vimfiler.vim'
-"Plugin 'Shougo/unite.vim'
+Plugin 'jiangmiao/auto-pairs'
 call vundle#end()
 
 
@@ -63,9 +60,6 @@ nmap <leader>q :q<cr>
 " Fast edit
 nmap <leader>ed :e<cr>
 
-" VimFilerExplorer shortcut
-nmap <leader>ep :VimFilerExplorer<cr>
-
 " Tagbar shortcut
 nmap <leader>tb :Tagbar<cr>
 
@@ -81,6 +75,9 @@ nmap <leader>sv :vsplit<space>
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
+" Fast goto develop path
+nmap <leader>go :call NERDTreeGoDevPath()<cr>
+nmap <leader>py :call NERDTreeRuntimeDevPath()<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
