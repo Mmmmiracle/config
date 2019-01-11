@@ -505,9 +505,9 @@ function Normalize()
 endfunction
 
 function NERDTreeRuntimeDevPath()
-    execute "NERDTree ~/git/live/app"
+    execute "NERDTree $RUNTIME_DEV_PATH"
 endfunction
 
 function NERDTreeGoDevPath()
-    execute "NERDTree ~/git/go/src/code.byted.org"
+    execute "NERDTree $GODEV_PATH"
 endfunction
