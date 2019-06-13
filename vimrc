@@ -4,6 +4,9 @@
 
 set rtp+=~/.vim/bundle/Vundle.vim  
 
+" fzf runtimepath
+set rtp+=~/.fzf
+
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'fatih/vim-go'
@@ -15,7 +18,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/fzf.vim'
-Plugin 'cespare/vim-toml'
+"Plugin 'cespare/vim-toml'
 Plugin 'jiangmiao/auto-pairs'
 call vundle#end()
 
@@ -25,7 +28,6 @@ call vundle#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " YCM
-"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_python_binary_path = '/usr/bin/python'
 nmap gd :YcmCompleter GoToDefinition<cr>
 
@@ -42,8 +44,6 @@ let vim_markdown_preview_browser = 'Google Chrome'
 "let g:go_metalinter_autosave = 1
 "let g:go_metalinter_autosave_enabled = ['golint']
 
-" fzf runtimepath
-set rtp+=~/.fzf
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Shortcut key
@@ -174,7 +174,7 @@ set background=dark
 " let g:solarized_termcolors=256
 
 " set vertical cursor line at 80th char
-set colorcolumn=80
+set colorcolumn=120
 highlight ColorColumn ctermbg=DarkGrey
 
 " Set extra options when running in GUI mode
@@ -505,9 +505,11 @@ function Normalize()
 endfunction
 
 function NERDTreeRuntimeDevPath()
-    execute "NERDTree $RUNTIME_DEV_PATH"
+    let runtime_dev_path = $RUNTIME_DEV_PATH
+    execute "NERDTree ".runtime_dev_path
 endfunction
 
 function NERDTreeGoDevPath()
-    execute "NERDTree $GODEV_PATH"
+    let godev_path = $GODEV_PATH
+    execute "NERDTree ".godev_path
 endfunction
